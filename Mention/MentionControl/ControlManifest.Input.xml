@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="xyz" constructor="MentionControl" version="0.0.1" display-name-key="Mention Control" description-key="Use @ to Mention People" control-type="standard">
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="field" display-name-key="Field" description-key="CRM Field Logical Name" of-type-group="text" usage="bound" required="true" /> 
+    <property name="sendEmail" display-name-key="Send Email?" description-key="Notify Mentioned User through Email." of-type="Enum" usage="input" required="true" default-value="0">
+      <value name="Yes" display-name-key="Yes" description-key="Yes,Notify User">0</value>
+      <value name="No" display-name-key="No" description-key="Do Not Notify User">1</value>
+    </property>
+    <property name="emailFromUserGuid" display-name-key="From Email User Guid" description-key="Provide GUID of the User of which Email will be sent,if not provided, Email will be sent through Logged in User" of-type-group="text" usage="input" required="false"/>
+    <property name="emailSubject" display-name-key="Subject" description-key="Provide Subject of the Email" of-type-group="text" usage="input" required="false"/>
+    <property name="emailContent" display-name-key="Description" description-key="Provide Description of the Email, record URL will be suffixed at the end" of-type-group="text" usage="input" required="false"/>
+    <type-group name="text">
+      <type>Multiple</type>
+      <type>SingleLine.Text</type>
+      <type>SingleLine.TextArea</type>
+    </type-group>
+    <resources>
+      <code path="index.ts" order="1"/>
+    </resources>
+    <feature-usage>
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>  
+  </control>
+</manifest>
